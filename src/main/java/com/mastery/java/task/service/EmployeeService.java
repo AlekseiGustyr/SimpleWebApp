@@ -1,4 +1,11 @@
 package com.mastery.java.task.service;
 
-public class EmployeeService {
+import com.mastery.java.task.dto.Employee;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+
+@Repository
+public interface EmployeeService extends JpaRepository<Employee, Long> {
+
 }

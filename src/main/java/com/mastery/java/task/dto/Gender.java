@@ -1,6 +1,10 @@
 package com.mastery.java.task.dto;
 
+
 public enum Gender {
-    MALE,
-    FEMALE
+    MALE ("MALE") ,
+    FEMALE ("FEMALE");
+
+    Gender(String gender) {
+    }
 }
