@@ -2,30 +2,27 @@ package com.mastery.java.task.service;
 
 import com.mastery.java.task.dao.EmployeeDao;
 import com.mastery.java.task.dto.Employee;
-import com.mastery.java.task.exception.userNotFoundException.userNotFoundException;
-import com.mastery.java.task.rest.EmployeeController;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import com.mastery.java.task.exception.UserNotFoundException;
+import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-
+@Log4j2
 @Service
-public class EmployeeService  {
-
-    public static   final Logger logger = LogManager.getLogger(EmployeeController.class.getSimpleName());
+public class EmployeeService
+{
 
     @Autowired
-    private static EmployeeDao EmployeeDao;
+    private EmployeeDao employeeDao;
 
-    public static Employee replaceEmployee(Employee updatedEmployee, long id)
+    public  Employee replaceEmployee(Employee updatedEmployee, long id)
     {
-        if (!EmployeeDao.existsById(id)) {
-            throw new userNotFoundException(id);
+        if (!employeeDao.existsById(id)) {
+            throw new UserNotFoundException(id);
         }
-        return EmployeeDao.findById(id).map(employee ->
+        return employeeDao.findById(id).map(employee ->
         {   employee.setEmployeeId(updatedEmployee.getEmployeeId());
             employee.setFirstName(updatedEmployee.getFirstName());
             employee.setLastName(updatedEmployee.getLastName());
@@ -33,29 +30,31 @@ public class EmployeeService  {
             employee.setJobTittle(updatedEmployee.getJobTittle());
             employee.setDateOfBirth(updatedEmployee.getDateOfBirth());
 
-            return EmployeeDao.save(employee);
-        }).orElseThrow(() -> new userNotFoundException(id));
+            return employeeDao.save(employee);
+        }).orElseThrow(() -> new UserNotFoundException(id));
     }
 
     public  String deleteEmployee(Long id)
     {
-        if(EmployeeDao.existsById(id))
-        EmployeeDao.deleteById(id);
-        else throw new userNotFoundException(id);
+        log.info("delete employee");
+        log.error("delete employee");
+        if(employeeDao.existsById(id))
+        employeeDao.deleteById(id);
+        else throw new UserNotFoundException(id);
         return "Employee deleted";
     }
 
     public Employee saveEmployee(Employee employee) {
 
-        return EmployeeDao.save(employee);
+        return employeeDao.save(employee);
     }
 
 
     public Employee findEmployeeById(long id) {
-        return EmployeeDao.findById(id).orElseThrow(() -> new userNotFoundException(id));
+        return employeeDao.findById(id).orElseThrow(() -> new UserNotFoundException(id));
     }
 
     public List<Employee> findAll() {
-        return EmployeeDao.findAll();
+        return employeeDao.findAll();
     }
 }

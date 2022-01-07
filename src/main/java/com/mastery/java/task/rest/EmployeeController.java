@@ -1,11 +1,8 @@
 package com.mastery.java.task.rest;
 
 import com.mastery.java.task.dto.Employee;
-import com.mastery.java.task.exception.userNotFoundException.userNotFoundException;
 import com.mastery.java.task.service.EmployeeService;
 
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,40 +14,35 @@ import java.util.List;
 public class EmployeeController {
 
     @Autowired
-    private EmployeeService EmployeeService;
-
-
+    private EmployeeService employeeService;
 
     @DeleteMapping("/{id}")
     String deleteEmployee(@PathVariable long id)
     {
-            return EmployeeService.deleteEmployee(id);
+            return employeeService.deleteEmployee(id);
         }
 
-
     @PostMapping()
-    Employee registration (@RequestBody @Valid Employee Employee)
+    Employee registration (@RequestBody @Valid Employee employee)
     {
-            return EmployeeService.saveEmployee(Employee);
+            return employeeService.saveEmployee(employee);
     }
 
     @GetMapping("/{id}")
     Employee getEmployee(@PathVariable(name ="id") long id)
     {
-            return EmployeeService.findEmployeeById(id);
+            return employeeService.findEmployeeById(id);
         }
-
 
     @GetMapping()
     List<Employee> getEmployees(String message){
-        return EmployeeService.findAll();
+        return employeeService.findAll();
     }
-
 
     @PutMapping("/{id}")
     Employee updateEmployee(@RequestBody  Employee updatedEmployee, @PathVariable long id )
     {
-               return EmployeeService.replaceEmployee(updatedEmployee,id);
+               return employeeService.replaceEmployee(updatedEmployee,id);
         }
 
 

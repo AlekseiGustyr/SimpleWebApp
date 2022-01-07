@@ -2,12 +2,12 @@ package com.mastery.java.task.exception;
 
 
 
-public class userExceptions {
+public class UserExceptions {
 
     private String message;
     private String debugMessage;
 
-    public userExceptions(String message, String debugMessage) {
+    public UserExceptions(String message, String debugMessage) {
         this.message = message;
         this.debugMessage = debugMessage;
     }
