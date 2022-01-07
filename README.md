@@ -1,11 +1,8 @@
-### Practical task
+###SimpleWebApp 
 
-Using the provided skeleton, implement the REST service.
+REST Api which realize CRUD operations on employees entities in database
 
-Useful link: https://spring.io/guides/gs/rest-service/
+###Start application
 
-In addition you could use Swagger to provide API documentation.
-        
-        
-  
-
+* mvn clean install
+* mvn spring-boot:start

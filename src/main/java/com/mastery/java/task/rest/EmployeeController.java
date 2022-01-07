@@ -13,28 +13,26 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.util.List;
 
-@RestController
+@RestController(value = "/employees")
 public class EmployeeController {
 
     public static final Logger logger = LogManager.getLogger(EmployeeController.class.getSimpleName());
 
-    private final EmployeeService EmployeeService;
+    private final EmployeeDao EmployeeDao;
+
     @Autowired
     private EmployeeDao EmployeeDa0;
 
-    @Autowired
-    public EmployeeController(EmployeeService EmployeeService) {
-        this.EmployeeService=EmployeeService;
+    public EmployeeController(com.mastery.java.task.dao.EmployeeDao employeeDao) {
+        EmployeeDao = employeeDao;
     }
 
-
-
-    @DeleteMapping("/del/{id}")
+    @DeleteMapping("/{id}")
     String deleteEmployee(@PathVariable long id) {
 
         logger.info("deleting employee with id= {}", id);
-        if (EmployeeService.existsById(id)) {
-            EmployeeService.deleteById(id);
+        if (EmployeeDao.existsById(id)) {
+            EmployeeDao.deleteById(id);
             logger.info("user with id = {} successfully deleted ", id);
             return new String("user deleted");
         }
@@ -42,36 +40,33 @@ public class EmployeeController {
         return new String("user not deleted");
     }
 
-
-
-    @PostMapping("/post")
+    @PostMapping()
     Employee registration (@RequestBody @Valid Employee Employee){
             logger.info("Try to save new user");
-            return EmployeeService.save(Employee);
+            return EmployeeDao.save(Employee);
     }
 
-
-    @GetMapping("/employer/{id}")
+    @GetMapping("/{id}")
     Employee getEmployee(@PathVariable(name ="id") long id)  {
-            return EmployeeService.findById(id).orElseThrow(() -> new userNotFoundException(id));
+            return EmployeeDao.findById(id).orElseThrow(() -> new userNotFoundException(id));
         }
 
 
-    @GetMapping("/employes")
+    @GetMapping()
     List<Employee> getEmployees(String message){
-        return EmployeeService.findAll();
+        return EmployeeDao.findAll();
     }
 
 
-    @PutMapping("/put/{id}")
+    @PutMapping("/{id}")
     Employee updateEmployee(@RequestBody  Employee updatedEmployee, @PathVariable long id )
     {
                 logger.info("change employee info with id={}", id);
-            if (!EmployeeService.existsById(id)) {
+            if (!EmployeeDao.existsById(id)) {
                 throw new userNotFoundException(id);
             }
 
-               return EmployeeDao.replaceEmployee(updatedEmployee,id);
+               return EmployeeService.replaceEmployee(updatedEmployee,id);
         }
 
 
