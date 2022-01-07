@@ -31,11 +31,11 @@ logs/
 target/
 =======
 
- .idea/
- *.iml
+
+
  *.iws
  *.ipr
- .vscode/
+
  .jpb
 
  **/target/

@@ -18,7 +18,7 @@
 	<description>Practical task</description>
 
 	<dependencies>
-		<dependency>
+		<!--dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-jdbc</artifactId>
 			<exclusions>
@@ -27,7 +27,7 @@
 					<artifactId>spring-boot-starter-logging</artifactId>
 				</exclusion>
 			</exclusions>
-		</dependency>
+		</dependency-->
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -142,7 +142,6 @@
 				<version>2.5.2</version>
 				<configuration>
                     <wait>2000</wait>
-
 				</configuration>
 				<executions>
 					<execution>
