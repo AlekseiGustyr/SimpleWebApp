@@ -6,8 +6,6 @@ import org.springframework.jms.annotation.EnableJms;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 
-
-
 @SpringBootApplication
 @EnableJms
 @EnableTransactionManagement

@@ -64,7 +64,7 @@
     <orderEntry type="library" name="Maven: org.springframework:spring-tx:5.3.8" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-beans:5.3.8" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-aspects:5.3.8" level="project" />
-    <orderEntry type="library" scope="RUNTIME" name="Maven: com.h2database:h2:2.0.202" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: com.h2database:h2:2.0.202" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-starter-web:2.5.2" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-starter:2.5.2" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot:2.5.2" level="project" />
@@ -167,5 +167,7 @@
     <orderEntry type="library" name="Maven: org.apache.geronimo.specs:geronimo-j2ee-management_1.1_spec:1.0.1" level="project" />
     <orderEntry type="library" name="Maven: org.apache.activemq:activemq-openwire-legacy:5.16.2" level="project" />
     <orderEntry type="library" name="Maven: jakarta.jms:jakarta.jms-api:2.0.3" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: junit:junit:4.13.2" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.hamcrest:hamcrest-core:2.2" level="project" />
   </component>
 </module>

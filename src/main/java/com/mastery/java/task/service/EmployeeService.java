@@ -11,17 +11,12 @@ import java.util.List;
 
 @Log4j2
 @Service
-public class EmployeeService
-{
+public class EmployeeService {
 
     @Autowired
     private EmployeeDao employeeDao;
 
-    public  Employee replaceEmployee(Employee updatedEmployee, long id)
-    {
-        if (!employeeDao.existsById(id)) {
-            throw new UserNotFoundException(id);
-        }
+    public  Employee updateEmployee(Employee updatedEmployee, long id) {
         return employeeDao.findById(id).map(employee ->
         {   employee.setEmployeeId(updatedEmployee.getEmployeeId());
             employee.setFirstName(updatedEmployee.getFirstName());
@@ -38,17 +33,14 @@ public class EmployeeService
     {
         log.info("delete employee");
         log.error("delete employee");
-        if(employeeDao.existsById(id))
+        employeeDao.findById(id).orElseThrow(()-> new UserNotFoundException(id));
         employeeDao.deleteById(id);
-        else throw new UserNotFoundException(id);
         return "Employee deleted";
     }
 
     public Employee saveEmployee(Employee employee) {
-
         return employeeDao.save(employee);
     }
-
 
     public Employee findEmployeeById(long id) {
         return employeeDao.findById(id).orElseThrow(() -> new UserNotFoundException(id));
