@@ -17,22 +17,20 @@ public class EmployeeService {
     private EmployeeDao employeeDao;
 
     public  Employee updateEmployee(Employee updatedEmployee, long id) {
-        return employeeDao.findById(id).map(employee ->
-        {   employee.setEmployeeId(updatedEmployee.getEmployeeId());
+        return employeeDao.findById(id)
+                .map(employee -> {
+            employee.setEmployeeId(updatedEmployee.getEmployeeId());
             employee.setFirstName(updatedEmployee.getFirstName());
             employee.setLastName(updatedEmployee.getLastName());
             employee.setDepartmentId(updatedEmployee.getDepartmentId());
             employee.setJobTittle(updatedEmployee.getJobTittle());
             employee.setDateOfBirth(updatedEmployee.getDateOfBirth());
-
             return employeeDao.save(employee);
         }).orElseThrow(() -> new UserNotFoundException(id));
     }
 
-    public  String deleteEmployee(Long id)
-    {
-        log.info("delete employee");
-        log.error("delete employee");
+    public  String deleteEmployee(Long id) {
+
         employeeDao.findById(id).orElseThrow(()-> new UserNotFoundException(id));
         employeeDao.deleteById(id);
         return "Employee deleted";
