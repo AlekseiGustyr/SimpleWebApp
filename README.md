@@ -1,8 +1,8 @@
-###SimpleWebApp 
+SimpleWebApp 
 
 REST Api which realize CRUD operations on employees entities in database
 
-###Start application
+Start application
 
 * mvn clean install
 * mvn spring-boot:start

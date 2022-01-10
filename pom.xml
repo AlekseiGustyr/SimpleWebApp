@@ -5,7 +5,7 @@
 
 	<groupId>com.mastery.java.task</groupId>
 	<artifactId>simplewebapp</artifactId>
-	<version>0.4</version>
+	<version>1.0</version>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
@@ -18,16 +18,6 @@
 	<description>Practical task</description>
 
 	<dependencies>
-		<!--dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-jdbc</artifactId>
-			<exclusions>
-				<exclusion>
-					<groupId>org.springframework.boot</groupId>
-					<artifactId>spring-boot-starter-logging</artifactId>
-				</exclusion>
-			</exclusions>
-		</dependency-->
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>

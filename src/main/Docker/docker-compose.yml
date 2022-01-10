@@ -2,7 +2,7 @@ version: '2'
 
 services:
   app:
-    image: 'simplewebapp-0.2.jar:latest'
+    image: 'simplewebapp:latest'
     build:
       context: .
     container_name: app
