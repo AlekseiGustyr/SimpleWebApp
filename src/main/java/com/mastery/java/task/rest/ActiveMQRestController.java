@@ -50,4 +50,11 @@ public class ActiveMQRestController {
         System.out.println(message);
     }
 
+    @GetMapping("/get_message_from_topic")
+    @JmsListener(destination = "my_topic")
+    public void getMessageFromTopic(String message){
+        System.out.println ("Topic ============= Topic");
+        System.out.println(message);
+    }
+
 }
